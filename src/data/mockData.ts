@@ -1,5 +1,16 @@
 import { Task, Project, User, Column } from '@/types/project';
 
+export interface Meeting {
+  id: string;
+  title: string;
+  date: string;
+  time: string;
+  duration: string;
+  attendees: User[];
+  projectId?: string;
+  color: string;
+}
+
 export const users: User[] = [
   { id: '1', name: 'Alex Chen', avatar: '', initials: 'AC' },
   { id: '2', name: 'Sarah Kim', avatar: '', initials: 'SK' },
@@ -102,6 +113,142 @@ export const tasks: Task[] = [
     tags: ['optimization'],
     projectId: '1',
     createdAt: '2024-12-05',
+  },
+  {
+    id: '9',
+    title: 'Design mobile app wireframes',
+    description: 'Create wireframes for all mobile app screens',
+    status: 'in-progress',
+    priority: 'high',
+    assignee: users[0],
+    dueDate: '2024-12-14',
+    tags: ['design', 'mobile'],
+    projectId: '2',
+    createdAt: '2024-12-01',
+  },
+  {
+    id: '10',
+    title: 'Set up React Native project',
+    status: 'done',
+    priority: 'high',
+    assignee: users[1],
+    tags: ['mobile', 'setup'],
+    projectId: '2',
+    createdAt: '2024-11-28',
+  },
+  {
+    id: '11',
+    title: 'Implement push notifications',
+    status: 'todo',
+    priority: 'medium',
+    assignee: users[2],
+    dueDate: '2024-12-20',
+    tags: ['mobile', 'backend'],
+    projectId: '2',
+    createdAt: '2024-12-03',
+  },
+  {
+    id: '12',
+    title: 'Create social media content',
+    description: 'Design posts for Instagram and Twitter',
+    status: 'in-progress',
+    priority: 'medium',
+    assignee: users[3],
+    dueDate: '2024-12-11',
+    tags: ['marketing', 'design'],
+    projectId: '3',
+    createdAt: '2024-12-01',
+  },
+  {
+    id: '13',
+    title: 'Email campaign setup',
+    status: 'done',
+    priority: 'high',
+    assignee: users[0],
+    tags: ['marketing', 'email'],
+    projectId: '3',
+    createdAt: '2024-11-25',
+  },
+];
+
+export const meetings: Meeting[] = [
+  {
+    id: '1',
+    title: 'Sprint Planning',
+    date: '2024-12-11',
+    time: '09:00',
+    duration: '1h',
+    attendees: [users[0], users[1], users[2]],
+    projectId: '1',
+    color: 'hsl(185 70% 42%)',
+  },
+  {
+    id: '2',
+    title: 'Design Review',
+    date: '2024-12-11',
+    time: '14:00',
+    duration: '45m',
+    attendees: [users[0], users[3]],
+    projectId: '1',
+    color: 'hsl(270 70% 55%)',
+  },
+  {
+    id: '3',
+    title: 'Team Standup',
+    date: '2024-12-12',
+    time: '10:00',
+    duration: '15m',
+    attendees: users,
+    color: 'hsl(145 65% 42%)',
+  },
+  {
+    id: '4',
+    title: 'Client Presentation',
+    date: '2024-12-12',
+    time: '15:00',
+    duration: '1h 30m',
+    attendees: [users[0], users[1]],
+    projectId: '3',
+    color: 'hsl(38 92% 50%)',
+  },
+  {
+    id: '5',
+    title: 'Mobile App Review',
+    date: '2024-12-13',
+    time: '11:00',
+    duration: '1h',
+    attendees: [users[1], users[2]],
+    projectId: '2',
+    color: 'hsl(270 70% 55%)',
+  },
+  {
+    id: '6',
+    title: 'Marketing Sync',
+    date: '2024-12-13',
+    time: '16:00',
+    duration: '30m',
+    attendees: [users[3], users[0]],
+    projectId: '3',
+    color: 'hsl(38 92% 50%)',
+  },
+  {
+    id: '7',
+    title: 'Sprint Retrospective',
+    date: '2024-12-14',
+    time: '14:00',
+    duration: '1h',
+    attendees: users,
+    projectId: '1',
+    color: 'hsl(185 70% 42%)',
+  },
+  {
+    id: '8',
+    title: 'One-on-One',
+    date: '2024-12-15',
+    time: '10:00',
+    duration: '30m',
+    attendees: [users[0], users[1]],
+    color: 'hsl(0 72% 55%)',
   },
 ];
 
