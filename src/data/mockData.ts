@@ -1,0 +1,113 @@
+import { Task, Project, User, Column } from '@/types/project';
+
+export const users: User[] = [
+  { id: '1', name: 'Alex Chen', avatar: '', initials: 'AC' },
+  { id: '2', name: 'Sarah Kim', avatar: '', initials: 'SK' },
+  { id: '3', name: 'Mike Johnson', avatar: '', initials: 'MJ' },
+  { id: '4', name: 'Emily Davis', avatar: '', initials: 'ED' },
+];
+
+export const projects: Project[] = [
+  { id: '1', name: 'Website Redesign', color: 'hsl(185 70% 42%)', taskCount: 24, completedCount: 18 },
+  { id: '2', name: 'Mobile App', color: 'hsl(270 70% 55%)', taskCount: 32, completedCount: 12 },
+  { id: '3', name: 'Marketing Campaign', color: 'hsl(38 92% 50%)', taskCount: 16, completedCount: 14 },
+];
+
+export const tasks: Task[] = [
+  {
+    id: '1',
+    title: 'Design new landing page',
+    description: 'Create wireframes and high-fidelity designs for the new landing page',
+    status: 'todo',
+    priority: 'high',
+    assignee: users[0],
+    dueDate: '2024-12-15',
+    tags: ['design', 'ui'],
+    projectId: '1',
+    createdAt: '2024-12-01',
+  },
+  {
+    id: '2',
+    title: 'Implement authentication',
+    description: 'Set up user authentication with OAuth providers',
+    status: 'in-progress',
+    priority: 'urgent',
+    assignee: users[1],
+    dueDate: '2024-12-10',
+    tags: ['backend', 'security'],
+    projectId: '1',
+    createdAt: '2024-12-02',
+  },
+  {
+    id: '3',
+    title: 'Write API documentation',
+    description: 'Document all REST endpoints with examples',
+    status: 'in-progress',
+    priority: 'medium',
+    assignee: users[2],
+    dueDate: '2024-12-12',
+    tags: ['docs'],
+    projectId: '1',
+    createdAt: '2024-12-03',
+  },
+  {
+    id: '4',
+    title: 'Set up CI/CD pipeline',
+    description: 'Configure GitHub Actions for automated testing and deployment',
+    status: 'review',
+    priority: 'high',
+    assignee: users[3],
+    dueDate: '2024-12-08',
+    tags: ['devops'],
+    projectId: '1',
+    createdAt: '2024-12-01',
+  },
+  {
+    id: '5',
+    title: 'User research interviews',
+    status: 'done',
+    priority: 'medium',
+    assignee: users[0],
+    tags: ['research'],
+    projectId: '1',
+    createdAt: '2024-11-28',
+  },
+  {
+    id: '6',
+    title: 'Database schema design',
+    status: 'done',
+    priority: 'high',
+    assignee: users[1],
+    tags: ['backend', 'database'],
+    projectId: '1',
+    createdAt: '2024-11-25',
+  },
+  {
+    id: '7',
+    title: 'Create component library',
+    description: 'Build reusable UI components with Storybook',
+    status: 'todo',
+    priority: 'medium',
+    assignee: users[2],
+    dueDate: '2024-12-18',
+    tags: ['frontend', 'ui'],
+    projectId: '1',
+    createdAt: '2024-12-04',
+  },
+  {
+    id: '8',
+    title: 'Performance optimization',
+    status: 'todo',
+    priority: 'low',
+    tags: ['optimization'],
+    projectId: '1',
+    createdAt: '2024-12-05',
+  },
+];
+
+export const getColumns = (taskList: Task[]): Column[] => [
+  { id: 'todo', title: 'To Do', tasks: taskList.filter(t => t.status === 'todo') },
+  { id: 'in-progress', title: 'In Progress', tasks: taskList.filter(t => t.status === 'in-progress') },
+  { id: 'review', title: 'In Review', tasks: taskList.filter(t => t.status === 'review') },
+  { id: 'done', title: 'Done', tasks: taskList.filter(t => t.status === 'done') },
+];
